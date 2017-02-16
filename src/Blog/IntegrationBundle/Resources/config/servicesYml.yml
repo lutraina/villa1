@@ -1,0 +1,11 @@
+parameters:
+    format_champ_integer2: /^[0-9]*$/
+    
+services:
+#    emaux.example:
+#        class: EmauxBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
+
+    integration.antispam:
+        class: Blog\IntegrationBundle\Antispam\Antispam
+        arguments:    ['%format_champ_integer2%']

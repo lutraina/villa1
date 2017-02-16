@@ -1,0 +1,31 @@
+blog_csv_parser:
+    resource: "@BlogCsvParserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+blog_integration_contenu:
+    resource: "@BlogIntegrationBundle/Controller/ContenuController.php"
+    type:     annotation
+
+blog_integration_categorie:
+    resource: "@BlogIntegrationBundle/Controller/CategorieController.php"
+    type:     annotation
+
+blog_validation:
+    resource: "@BlogValidationBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+blog_integration:
+    resource: "@BlogIntegrationBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+blog_front_end:
+    resource: "@BlogFrontEndBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

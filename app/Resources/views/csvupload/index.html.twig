@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Csvuploads list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Createdat</th>
+                <th>Updatedat</th>
+                <th>Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for csvUpload in csvUploads %}
+            <tr>
+                <td><a href="{{ path('csvupload_show', { 'id': csvUpload.id }) }}">{{ csvUpload.id }}</a></td>
+                <td>{{ csvUpload.nom }}</td>
+                <td>{% if csvUpload.createdAt %}{{ csvUpload.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if csvUpload.updatedAt %}{{ csvUpload.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ csvUpload.type }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('csvupload_show', { 'id': csvUpload.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('csvupload_edit', { 'id': csvUpload.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('csvupload_new') }}">Create a new csvUpload</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,11 @@
+parameters:
+    format_fichier: "csv"
+    
+services:
+#    emaux.example:
+#        class: EmauxBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
+
+    blog_csv_parser.parser:
+        class: Blog\CsvParserBundle\Parser\Csv\CsvParser
+        arguments:    []
