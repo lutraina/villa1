@@ -19,7 +19,7 @@ class IndexController extends Controller
       $antispam = $this->get('integration.antispam');
       
       $value = 12345;
-      if ($antispam->isInteger($logger, $value, $antispamFormat)) {
+      if ($antispam->isInteger($value, $antispamFormat)) {
         $logger->info('é integer');
         return new Response('é integer');
       } else {

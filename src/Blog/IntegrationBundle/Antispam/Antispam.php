@@ -15,10 +15,23 @@ use Psr\Log\LoggerInterface;
 
 //private $logger;
 
-class Antispam extends Controller
+class Antispam extends \Twig_Extension
 
 {
 
+    private $logger;
+ 
+
+  public function __construct($logger)
+
+  {
+
+    $this->logger    = $logger;
+
+    
+
+  }
+  
   /**
 
    * Vérifie si le texte est un spam ou non
@@ -35,7 +48,11 @@ class Antispam extends Controller
 
   {
 
-    return strlen($text) < 50;
+    if(strlen($text) < 50){
+        
+    }
+    return new Response('é < 50');
+    //return strlen($text) < 50;
 
   }
   
@@ -51,7 +68,7 @@ class Antispam extends Controller
 
    */
 
-  public function isInteger($logger, $text, $antispamFormat)
+  public function isInteger($text, $antispamFormat)
   {
     
      
@@ -68,5 +85,20 @@ class Antispam extends Controller
  
 
   }
+  
+  // Twig va exécuter cette méthode pour savoir quelle(s) fonction(s) ajoute notre service
+  public function getFunctions()
+  {
+    return array(
+      'checkIfSpam' => new \Twig_Function_Method($this, 'isSpam')
+    );
+  }
+
+  // La méthode getName() identifie votre extension Twig, elle est obligatoire
+  public function getName()
+  {
+    return 'Antispam';
+  }
+  
 
 }
